@@ -1,0 +1,16 @@
+body{
+   background-color: azul indigo; 
+   color: white;
+   font-family: "Bitcount Grid Double", system-ui;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 700px;
+   margin: 0;
+}
+
+button {
+    background-color: black;
+color:white;
+font-family: "Bitcount Grid Double", system-ui;
+}
