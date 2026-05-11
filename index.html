@@ -1,47 +1,38 @@
+
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-# 1. Carregar a base de dados
-# Supondo um CSV com colunas 'frequencia' e 'satisfacao'
-df = pd.read_csv('dados_transporte.csv')
+# Configuração estética dos gráficos
+sns.set_theme(style="whitegrid")
 
-# 2. Filtrar os grupos de interesse
-diariamente = df[df['frequencia'] == 'Diariamente']['satisfacao']
-raramente = df[df['frequencia'] == 'Raramente']['satisfacao']
+def executar_analise(caminho_csv):
+    # Carregar a base de dados
+    df = pd.read_csv(caminho_csv)
+    
+    # 1. Filtrar os grupos
+    diario = df[df['frequencia'] == 'Diariamente']['satisfacao']
+    raro = df[df['frequencia'] == 'Raramente']['satisfacao']
+    
+    # 2. Criar a visualização (Histograma)
+    plt.figure(figsize=(12, 6))
+    
+    sns.histplot(diario, kde=True, color="skyblue", label="Uso Diário", element="step")
+    sns.histplot(raro, kde=True, color="orange", label="Uso Raro", element="step")
+    
+    # Customização do gráfico
+    plt.title('Comparação de Satisfação: Usuários Diários vs. Raros', fontsize=15)
+    plt.xlabel('Nota de Satisfação (0-10)', fontsize=12)
+    plt.ylabel('Frequência de Respostas', fontsize=12)
+    plt.legend()
+    
+    # 3. Identificar diferenças (Salvar imagem para o GitHub)
+    plt.savefig('grafico_comparativo.png')
+    plt.show()
+    
+    # 4. Breve comparação estatística
+    print(f"Média Diário: {diario.mean():.2f}")
+    print(f"Média Raro: {raro.mean():.2f}")
 
-# 3. Gerar Histogramas Comparativos
-fig = go.Figure()
-
-fig.add_trace(go.Histogram(
-    x=diariamente,
-    name='Uso Diário',
-    xbins=dict(start=0, end=10, size=1),
-    marker_color='#EB89B5',
-    opacity=0.75
-))
-
-fig.add_trace(go.Histogram(
-    x=raramente,
-    name='Uso Raro',
-    xbins=dict(start=0, end=10, size=1),
-    marker_color='#330C73',
-    opacity=0.75
-))
-
-# 4. Organizar o layout (Equivalente à "Nova Aba")
-fig.update_layout(
-    title_text='Distribuição da Satisfação por Frequência de Uso',
-    xaxis_title_text='Nota de Satisfação',
-    yaxis_title_text='Quantidade de Respostas',
-    barmode='overlay', # Sobrepõe as barras para comparação direta
-    template='plotly_white'
-)
-
-# Salvar o gráfico para subir no GitHub
-fig.write_image("analise_satisfacao.png")
-fig.show()
-
-# 5. Breve Análise Automatizada
-print(f"Média Satisfação (Diário): {diariamente.mean():.2f}")
-print(f"Média Satisfação (Raro): {raramente.mean():.2f}")
+# Para testar, você precisaria de um arquivo 'transporte.csv'
+# executar_analise('transporte.csv')
