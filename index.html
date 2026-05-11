@@ -1,25 +1,41 @@
 
-# 🎬 Projeto Criativo: O Maestro de Silício (Roteiro)
-*Um experimento de colaboração Homem-Máquina.*
+import pandas as pd
 
-## 📖 O Conceito
-Criação de um roteiro para um vídeo curto (3 minutos) que explora o diálogo entre um músico humano aposentado e um algoritmo de composição.
+# 1. Simulação dos dados coletados nos últimos 5 dias
+data = {
+    'Dia': ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+    'Estudo': [120, 150, 90, 200, 60],        # tempo em minutos
+    'Jogos': [30, 0, 45, 20, 120],
+    'Redes Sociais': [60, 80, 70, 90, 110],
+    'Vídeos': [45, 60, 30, 50, 90]
+}
 
-## 🧠 Análise de Colaboração com IA
+def analisar_tempo_tela():
+    # Criar o DataFrame (equivalente à planilha)
+    df = pd.DataFrame(data)
+    
+    # 2. Calcular tempo total de tela por dia
+    categorias = ['Estudo', 'Jogos', 'Redes Sociais', 'Vídeos']
+    df['Total_Dia'] = df[categorias].sum(axis=1)
+    
+    # 3. Calcular a média de cada categoria ao longo dos 5 dias
+    medias = df[categorias].mean()
+    
+    # 4. Identificar a atividade que consumiu mais tempo no total
+    totais_categoria = df[categorias].sum()
+    campeao_tempo = totais_categoria.idxmax()
+    valor_campeao = totais_categoria.max()
 
-### 1. Facilitação da IA
-A IA seria excelente na **estruturação narrativa** (Jornada do Herói) e na geração de **metáforas visuais** complexas. Ela poderia sugerir diálogos técnicos sobre teoria musical que eu, como autor, talvez desconhecesse, além de gerar storyboards instantâneos para cada cena.
+    # Exibição dos Resultados
+    print("--- Relatório de Tempo de Tela ---")
+    print(df)
+    print("\n--- Média por Categoria (Minutos) ---")
+    print(medias)
+    print(f"\n🚀 Atividade com maior consumo total: {campeao_tempo} ({valor_campeao} minutos)")
+    
+    # Exportar para CSV (Gera a planilha física)
+    df.to_csv('tempo_tela_analise.csv', index=False)
+    print("\n✅ Planilha 'tempo_tela_analise.csv' gerada com sucesso!")
 
-### 2. O Toque Humano (O que eu faria melhor)
-A **subtileza emocional** e o "subtexto". Uma IA consegue escrever sobre tristeza, mas um humano consegue descrever o *silêncio* carregado de uma sala vazia de uma forma que ressoe com a experiência vivida. O ritmo orgânico da fala e as imperfeições que tornam o personagem real são méritos exclusivamente humanos.
-
-### 3. Como a IA poderia atrapalhar
-Ela poderia causar um **"bloqueio de originalidade"** ao sugerir clichês baseados em padrões estatísticos. Se eu aceitar todas as sugestões da IA, o roteiro corre o risco de se tornar genérico, perdendo a "alma" ou a quebra de expectativa que define uma obra de arte autêntica.
-
-### 4. Sentimento de Parceria
-Trabalhar com IA é como ter um **assistente incansável e hiper-educado**, mas que não tem opinião própria. Sinto uma mistura de empolgação pela velocidade de execução e cautela para não deixar que a ferramenta dite o rumo da minha visão criativa. É uma dança onde eu preciso liderar o tempo todo.
-
----
-
-## 🛠️ Implementação Técnica
-O código abaixo automatiza a organização dos rascunhos deste projeto.
+if __name__ == "__main__":
+    analisar_tempo_tela()
