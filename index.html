@@ -1,28 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet">
-    <title>Vilarejo abandonado</title>
-</head>
-<body>
-    <main>
-        <div classe="passo ativo" id="passo-0">
-            <p>Você é um detetive, e foi chamado para investigar um vilarejo atrás da floresta. Chegando no local, você vê uma mulher alta e palida lhe pedindo ajuda, ela estava muito ensaguentada.</p>
-       <button class="btn-proximo" data-proximo="1">Você ajuda a mulher</button>
-       <button class="btn-proximo" data-proximo="2">Você a ignora e corre</button>
-        </div>
-        <div classe="passo" id="passo-0">
-            <p>Ao tentar socorrê-la, ela sorri de forma estranha e diz: "Não devia ter me ajudado..." De repente, você sente uma dor crescente em seu corpo, como se os ferimentos dela estivessem sendo transferidos para você. Ela revela, em um sussurro, que agora você está "marcado". O ar fica pesado e você começa a perceber que há algo sobrenatural e macabro por trás dessa mulher e do vilarejo.</p>
-       <button class="btn-proximo" data-proximo="3">Você vai até ela e a confronta</button>
-       <button class="btn-proximo" data-proximo="4">Você decide voltar pra casa</button>
-       </div>
-    </main>
-    <script src="script.js"></script>
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
-</body>
-</html>
+# 1. Carregar a base de dados
+# Supondo um CSV com colunas 'frequencia' e 'satisfacao'
+df = pd.read_csv('dados_transporte.csv')
+
+# 2. Filtrar os grupos de interesse
+diariamente = df[df['frequencia'] == 'Diariamente']['satisfacao']
+raramente = df[df['frequencia'] == 'Raramente']['satisfacao']
+
+# 3. Gerar Histogramas Comparativos
+fig = go.Figure()
+
+fig.add_trace(go.Histogram(
+    x=diariamente,
+    name='Uso Diário',
+    xbins=dict(start=0, end=10, size=1),
+    marker_color='#EB89B5',
+    opacity=0.75
+))
+
+fig.add_trace(go.Histogram(
+    x=raramente,
+    name='Uso Raro',
+    xbins=dict(start=0, end=10, size=1),
+    marker_color='#330C73',
+    opacity=0.75
+))
+
+# 4. Organizar o layout (Equivalente à "Nova Aba")
+fig.update_layout(
+    title_text='Distribuição da Satisfação por Frequência de Uso',
+    xaxis_title_text='Nota de Satisfação',
+    yaxis_title_text='Quantidade de Respostas',
+    barmode='overlay', # Sobrepõe as barras para comparação direta
+    template='plotly_white'
+)
+
+# Salvar o gráfico para subir no GitHub
+fig.write_image("analise_satisfacao.png")
+fig.show()
+
+# 5. Breve Análise Automatizada
+print(f"Média Satisfação (Diário): {diariamente.mean():.2f}")
+print(f"Média Satisfação (Raro): {raramente.mean():.2f}")
