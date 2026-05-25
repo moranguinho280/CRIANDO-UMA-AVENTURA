@@ -1,112 +1,61 @@
 
-/* Configurações Globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Flashcards de Estudio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-body {
-    background-color: #f4f7f5;
-    color: #2c3e50;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
+    <header>
+        <h1>🧠 Mi Colección de Flashcards</h1>
+        <p>Pasa el cursor (o haz clic) sobre las tarjetas para ver la respuesta.</p>
+    </header>
 
-.container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-}
+    <main class="container-flashcards">
 
-header h1 {
-    color: #2e7d32; /* Verde Agro */
-    margin-bottom: 5px;
-}
+        <article class="cartao">
+            <div class="cartao-conteudo">
+                <div class="cartao-frente">
+                    <img src="assets/flashcard1-frente.png" alt="Icono de pregunta 1">
+                    <h3>¿Qué es HTML?</h3>
+                </div>
+                <div class="cartao-verso">
+                    <img src="assets/flashcard1-verso.png" alt="Icono de respuesta 1">
+                    <p>Es el lenguaje de marcado estándar para crear páginas web.</p>
+                </div>
+            </div>
+        </article>
 
-header p {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
+        <article class="cartao">
+            <div class="cartao-conteudo">
+                <div class="cartao-frente">
+                    <img src="assets/flashcard2-frente.png" alt="Icono de pregunta 2">
+                    <h3>¿Qué es CSS?</h3>
+                </div>
+                <div class="cartao-verso">
+                    <img src="assets/flashcard2-verso.png" alt="Icono de respuesta 2">
+                    <p>Es el lenguaje que usamos para darle estilo y diseño a nuestra página web.</p>
+                </div>
+            </div>
+        </article>
 
-.banner-img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
+        <article class="cartao">
+            <div class="cartao-conteudo">
+                <div class="cartao-frente">
+                    <img src="assets/flashcard3-frente.png" alt="Icono de pregunta 3">
+                    <h3>¿Qué es GitHub?</h3>
+                </div>
+                <div class="cartao-verso">
+                    <img src="assets/flashcard3-verso.png" alt="Icono de respuesta 3">
+                    <p>Es una plataforma en la nube que nos permite guardar, organizar y compartir nuestros proyectos de código.</p>
+                </div>
+            </div>
+        </article>
 
-.calculator-box {
-    background-color: #f9fbf9;
-    border: 1px solid #e8f5e9;
-    border-radius: 8px;
-    padding: 20px;
-}
+    </main>
 
-.calculator-box h2 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #388e3c;
-}
-
-.input-group {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    outline: none;
-}
-
-.input-group input:focus {
-    border-color: #2e7d32;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background-color: #1b5e20;
-}
-
-#resultado {
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: bold;
-}
-
-.sucesso {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
-}
+</body>
+</html>
