@@ -1,41 +1,112 @@
 
-import pandas as pd
-
-# 1. Simulação dos dados coletados nos últimos 5 dias
-data = {
-    'Dia': ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-    'Estudo': [120, 150, 90, 200, 60],        # tempo em minutos
-    'Jogos': [30, 0, 45, 20, 120],
-    'Redes Sociais': [60, 80, 70, 90, 110],
-    'Vídeos': [45, 60, 30, 50, 90]
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-def analisar_tempo_tela():
-    # Criar o DataFrame (equivalente à planilha)
-    df = pd.DataFrame(data)
-    
-    # 2. Calcular tempo total de tela por dia
-    categorias = ['Estudo', 'Jogos', 'Redes Sociais', 'Vídeos']
-    df['Total_Dia'] = df[categorias].sum(axis=1)
-    
-    # 3. Calcular a média de cada categoria ao longo dos 5 dias
-    medias = df[categorias].mean()
-    
-    # 4. Identificar a atividade que consumiu mais tempo no total
-    totais_categoria = df[categorias].sum()
-    campeao_tempo = totais_categoria.idxmax()
-    valor_campeao = totais_categoria.max()
+body {
+    background-color: #f4f7f5;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-    # Exibição dos Resultados
-    print("--- Relatório de Tempo de Tela ---")
-    print(df)
-    print("\n--- Média por Categoria (Minutos) ---")
-    print(medias)
-    print(f"\n🚀 Atividade com maior consumo total: {campeao_tempo} ({valor_campeao} minutos)")
-    
-    # Exportar para CSV (Gera a planilha física)
-    df.to_csv('tempo_tela_analise.csv', index=False)
-    print("\n✅ Planilha 'tempo_tela_analise.csv' gerada com sucesso!")
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
 
-if __name__ == "__main__":
-    analisar_tempo_tela()
+header h1 {
+    color: #2e7d32; /* Verde Agro */
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.calculator-box {
+    background-color: #f9fbf9;
+    border: 1px solid #e8f5e9;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.calculator-box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #388e3c;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #2e7d32;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #1b5e20;
+}
+
+#resultado {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.sucesso {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
