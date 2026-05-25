@@ -1,61 +1,42 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Flashcards de Estudio</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+/* ==========================================
+   🎴 CLASSE DO CARTÃO (FOCO DO DESAFIO)
+   ========================================== */
+.cartao {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e2e8f0;
+    transition: transform 0.3s ease;
+    text-align: center;
 
-    <header>
-        <h1>🧠 Mi Colección de Flashcards</h1>
-        <p>Pasa el cursor (o haz clic) sobre las tarjetas para ver la respuesta.</p>
-    </header>
+    /* 🚀 VALORES ALTERADOS NO DESAFIO: */
+    width: 260px;          /* Nova largura testada */
+    height: 200px;         /* Nova altura testada (ficou mais horizontal!) */
+    padding: 15px 25px;    /* Novo padding: 15px em cima/baixo e 25px nas laterais */
+}
 
-    <main class="container-flashcards">
+/* Efeito clássico de passar o mouse */
+.cartao:hover {
+    transform: translateY(-5px);
+    border-color: #4c51bf;
+}
 
-        <article class="cartao">
-            <div class="cartao-conteudo">
-                <div class="cartao-frente">
-                    <img src="assets/flashcard1-frente.png" alt="Icono de pregunta 1">
-                    <h3>¿Qué es HTML?</h3>
-                </div>
-                <div class="cartao-verso">
-                    <img src="assets/flashcard1-verso.png" alt="Icono de respuesta 1">
-                    <p>Es el lenguaje de marcado estándar para crear páginas web.</p>
-                </div>
-            </div>
-        </article>
+/* Estilos internos para o conteúdo do cartão caber direitinho */
+.cartao img {
+    width: 50px;           /* Reduzimos um pouco a imagem para caber na nova altura */
+    height: 50px;
+    margin-bottom: 10px;
+}
 
-        <article class="cartao">
-            <div class="cartao-conteudo">
-                <div class="cartao-frente">
-                    <img src="assets/flashcard2-frente.png" alt="Icono de pregunta 2">
-                    <h3>¿Qué es CSS?</h3>
-                </div>
-                <div class="cartao-verso">
-                    <img src="assets/flashcard2-verso.png" alt="Icono de respuesta 2">
-                    <p>Es el lenguaje que usamos para darle estilo y diseño a nuestra página web.</p>
-                </div>
-            </div>
-        </article>
+.cartao h3 {
+    color: #2d3748;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
 
-        <article class="cartao">
-            <div class="cartao-conteudo">
-                <div class="cartao-frente">
-                    <img src="assets/flashcard3-frente.png" alt="Icono de pregunta 3">
-                    <h3>¿Qué es GitHub?</h3>
-                </div>
-                <div class="cartao-verso">
-                    <img src="assets/flashcard3-verso.png" alt="Icono de respuesta 3">
-                    <p>Es una plataforma en la nube que nos permite guardar, organizar y compartir nuestros proyectos de código.</p>
-                </div>
-            </div>
-        </article>
-
-    </main>
-
-</body>
-</html>
+.cartao p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
